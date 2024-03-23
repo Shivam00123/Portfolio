@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active .nav-indicator {
+  background-color: white;
+  width: 4rem;
+}
+
+.active .nav-text {
+  color: white;
+}
+
+.customCursor {
+  cursor: url("../../public/images/chrome.jpeg"), pointer;
+}
+
+.hover-arrow {
+  transform: translateY(-5px) translateX(2px) rotate(-45deg);
+}
+.non-hover-arrow {
+  transform: translateY(0px) rotate(-45deg);
+}

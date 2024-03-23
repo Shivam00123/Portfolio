@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - 8080:80
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+  portfolio:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./portfolio
+    volumes:
+      - /app/node_modules
+      - ./portfolio:/app

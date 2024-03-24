@@ -4,5 +4,6 @@ const personalProjectsController = require("../controllers/personalProjectsContr
 const Router = express.Router();
 
 Router.route("/").get(personalProjectsController.getAllPersonalProjects);
+Router.route("/:id").get(personalProjectsController.getPersonalProjectInfo);
 
 module.exports = Router;

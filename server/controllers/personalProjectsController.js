@@ -8,3 +8,11 @@ exports.getAllPersonalProjects = catchAsync(async (req, res, next) => {
     data: personalProjects,
   });
 });
+
+exports.getPersonalProjectInfo = catchAsync(async (req, res, next) => {
+  const project = await PersonalProjects.findById(req.params.id);
+  res.status(200).send({
+    status: "success",
+    data: project,
+  });
+});

@@ -17,6 +17,7 @@ const personalProjectsSchema = new mongoose.Schema({
   longDescription: String,
   points: [String],
   likes: Number,
+  link: String,
 });
 
 const PersonalProjects = mongoose.model(

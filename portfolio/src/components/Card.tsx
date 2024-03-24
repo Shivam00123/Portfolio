@@ -12,12 +12,14 @@ const Card = ({
   menuTitle,
   showDate = false,
   handleCardClick,
+  link,
 }: {
   isHovering: boolean;
   item: GenericObject;
   menuTitle: string;
   showDate: boolean;
   handleCardClick: (obj: GenericObject) => void;
+  link: boolean;
 }) => {
   const [onHover, setOnHover] = useState<boolean>(false);
   const divRef = useRef(null);
@@ -51,8 +53,11 @@ const Card = ({
   return (
     <div
       ref={divRef}
-      onClick={() => handleCardClick({ id: item.id, section: menuTitle })}
-      style={{ opacity: isHovering ? (onHover ? "100%" : "50%") : "100%" }}
+      onClick={() => handleCardClick({ id: item._id, section: menuTitle })}
+      style={{
+        opacity: isHovering ? (onHover ? "100%" : "50%") : "100%",
+        cursor: link ? "pointer" : "default",
+      }}
       onMouseEnter={() => setOnHover(true)}
       onMouseLeave={() => setOnHover(false)}
       className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:group-hover:opacity-100 hover:opacity-100 mb-20 -lg:opacity-100"
@@ -73,7 +78,7 @@ const Card = ({
         <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500 sm:col-span-2">
           <div className="w-28 fit rounded-sm overflow-hidden box-border">
             <Image
-              src="/images/dummy.png"
+              src={item?.image || "/images/dummy.png"}
               alt="dummy"
               width="112"
               height="80"
@@ -94,17 +99,19 @@ const Card = ({
               <span>
                 {item.title} . {item.company}{" "}
                 <span className="inline-block">{item.location}</span>
-                <span
-                  className={`inline-flex text-sm ml-2 -rotate-45 transition-all ${
-                    isHovering
-                      ? onHover
-                        ? "hover-arrow"
+                {link && (
+                  <span
+                    className={`inline-flex text-sm ml-2 -rotate-45 transition-all ${
+                      isHovering
+                        ? onHover
+                          ? "hover-arrow"
+                          : "non-hover-arrow"
                         : "non-hover-arrow"
-                      : "non-hover-arrow"
-                  }`}
-                >
-                  <FaArrowRight />
-                </span>
+                    }`}
+                  >
+                    <FaArrowRight />
+                  </span>
+                )}
               </span>
             </div>
           </div>

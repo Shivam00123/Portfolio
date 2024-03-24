@@ -22,6 +22,7 @@ const Experiences = () => {
       id="experience"
       data={experiences}
       showDate={true}
+      link={false}
     />
   );
 };

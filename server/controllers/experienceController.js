@@ -8,3 +8,11 @@ exports.getAllExperience = catchAsync(async (req, res, next) => {
     data: experiences,
   });
 });
+
+exports.getExperience = catchAsync(async (req, res, next) => {
+  const experience = await Experience.findById(req.params.id);
+  res.status(200).send({
+    status: "success",
+    data: experience,
+  });
+});

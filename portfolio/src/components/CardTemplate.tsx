@@ -11,6 +11,7 @@ interface CardTemplateProps {
   menuTitle?: string;
   data: GenericObject[];
   showDate?: boolean;
+  link?: boolean;
 }
 
 const CardTemplate: React.FC<CardTemplateProps> = ({
@@ -18,12 +19,15 @@ const CardTemplate: React.FC<CardTemplateProps> = ({
   id,
   data,
   showDate = false,
+  link = true,
 }) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const router = useRouter();
 
   const handleCardClick = (obj: GenericObject) => {
-    router.push(`/${obj.id}/${obj.section}`);
+    if (link) {
+      router.push(`/${obj.id}/${obj.section}`);
+    }
   };
 
   return (
@@ -45,6 +49,7 @@ const CardTemplate: React.FC<CardTemplateProps> = ({
             menuTitle={id}
             showDate={showDate}
             handleCardClick={handleCardClick}
+            link={link}
           />
         ))}
       </div>

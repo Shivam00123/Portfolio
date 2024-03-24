@@ -4,5 +4,6 @@ const companyProjectsController = require("../controllers/companyProjectsControl
 const Router = express.Router();
 
 Router.route("/").get(companyProjectsController.getAllCompanyProjects);
+Router.route("/:id").get(companyProjectsController.getCompanyProjectInfo);
 
 module.exports = Router;

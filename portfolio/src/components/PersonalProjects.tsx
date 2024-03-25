@@ -18,7 +18,7 @@ const PersonalProjects = () => {
   }, []);
   return (
     <>
-      {personalProjects.length ? (
+      {personalProjects?.length ? (
         <CardTemplate
           title="Personal projects"
           id="personal projects"

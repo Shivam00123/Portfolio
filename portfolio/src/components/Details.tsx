@@ -89,6 +89,9 @@ const Details = ({ data }: { data: any }) => {
               </div>
             )}
           </div>
+          <div className="pointer-events-none lg:hidden w-full grid place-items-center text-font-white rounded-sm h-fit bg-main-blue font-bold px-3 py-2 text-center text-sm">
+            <h1 className="text-font-white">Click image to open website</h1>
+          </div>
         </div>
       ) : (
         <Loader />

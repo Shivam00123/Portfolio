@@ -9,7 +9,9 @@ import Fetching from "./Fetching";
 const Experiences = () => {
   const [experiences, setExperiences] = useState<GenericObject[]>([]);
   const fetchExperiencesData = async () => {
-    const data = await axios.get("/api/v1/experiences");
+    const data = await axios.get(
+      "https://portfolio-1d33.onrender.com/v1/experiences"
+    );
     setExperiences(data.data.data);
   };
 

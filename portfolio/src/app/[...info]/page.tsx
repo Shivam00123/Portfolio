@@ -33,7 +33,9 @@ const Page = ({ params }: { params: any }) => {
           collectionName = "personalProjects";
           break;
       }
-      const response = await axios.get(`/api/v1/${collectionName}/${id}`);
+      const response = await axios.get(
+        `https://portfolio-1d33.onrender.com/v1/${collectionName}/${id}`
+      );
 
       setData(response.data.data);
     } catch (error) {

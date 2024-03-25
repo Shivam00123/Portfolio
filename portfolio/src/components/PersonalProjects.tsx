@@ -10,7 +10,7 @@ const PersonalProjects = () => {
 
   const fetchPersonalProjects = async () => {
     const personalprojects = await axios.get(
-      "https://portfolio-1d33.onrender.com/v1/v1/personalProjects"
+      "https://portfolio-1d33.onrender.com/v1/personalProjects"
     );
     setPersonalProjects(personalprojects.data.data);
   };

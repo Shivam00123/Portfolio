@@ -8,7 +8,9 @@ const Projects = () => {
   const [companyProjects, setCompanyProjects] = useState<GenericObject[]>([]);
 
   const fetchCompanyProjects = async () => {
-    const cp = await axios.get("/api/v1/companyProjects");
+    const cp = await axios.get(
+      "https://portfolio-1d33.onrender.com/v1/companyProjects"
+    );
     setCompanyProjects(cp.data.data);
   };
 

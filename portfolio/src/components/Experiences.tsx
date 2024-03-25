@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import CardTemplate from "./CardTemplate";
 import axios from "axios";
 import { GenericObject } from "../../interfaces/types";
+import Fetching from "./Fetching";
 
 const Experiences = () => {
   const [experiences, setExperiences] = useState<GenericObject[]>([]);
@@ -17,13 +18,19 @@ const Experiences = () => {
   }, []);
 
   return (
-    <CardTemplate
-      title="Experience"
-      id="experience"
-      data={experiences}
-      showDate={true}
-      link={false}
-    />
+    <>
+      {experiences?.length ? (
+        <CardTemplate
+          title="Experience"
+          id="experience"
+          data={experiences}
+          showDate={true}
+          link={false}
+        />
+      ) : (
+        <Fetching title="Experience Data" />
+      )}
+    </>
   );
 };
 

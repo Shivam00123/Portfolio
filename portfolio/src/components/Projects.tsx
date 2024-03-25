@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardTemplate from "./CardTemplate";
 import { GenericObject } from "../../interfaces/types";
 import axios from "axios";
+import Fetching from "./Fetching";
 
 const Projects = () => {
   const [companyProjects, setCompanyProjects] = useState<GenericObject[]>([]);
@@ -16,11 +17,17 @@ const Projects = () => {
   }, []);
 
   return (
-    <CardTemplate
-      title="Company projects"
-      id="company projects"
-      data={companyProjects}
-    />
+    <>
+      {companyProjects?.length ? (
+        <CardTemplate
+          title="Company projects"
+          id="company projects"
+          data={companyProjects}
+        />
+      ) : (
+        <Fetching title="Company Projects" />
+      )}
+    </>
   );
 };
 

@@ -27,6 +27,18 @@
   cursor: pointer;
 }
 
+.link-text-off {
+  left: 50%;
+  opacity: 0%;
+  transition: all 0.5s ease-in-out;
+}
+
+.link-text-on {
+  left: -60%;
+  opacity: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
 .image-hover-off {
   transform: translate(0%, 0%);
   transition: all 0.5s ease-in-out;
@@ -79,6 +91,13 @@
   filter: blur(50px);
 }
 
+.reduceOpacity {
+  opacity: 50%;
+}
+.normalOpacity {
+  opacity: 100%;
+}
+
 @media (max-width: 1067px) {
   .block {
     background: none;
@@ -86,9 +105,17 @@
   .image-hover-on {
     transform: translate(0%, 0%);
   }
+  .reduceOpacity {
+    opacity: 100%;
+  }
+  .link-text-on {
+    display: none;
+  }
 
   .block:before,
   .block:after {
     display: none;
   }
 }
+
+/* -------------------------------- Loader */

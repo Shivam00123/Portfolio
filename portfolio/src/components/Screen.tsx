@@ -2,7 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
+import { Inter } from "next/font/google";
+
 import { GenericObject } from "../../interfaces/types";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 const Screen = ({ children }: { children: any }) => {
   const [coordinates, setCoordinates] = useState<GenericObject>({ x: 0, y: 0 });
@@ -20,7 +27,9 @@ const Screen = ({ children }: { children: any }) => {
   }, []);
   return (
     <RecoilRoot>
-      <main className="w-screen flex min-h-screen flex-col items-center justify-between bg-main-blue">
+      <main
+        className={`w-screen flex min-h-screen flex-col items-center justify-between bg-main-blue ${inter.variable} font-sans`}
+      >
         <div
           className="h-full pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
           style={{

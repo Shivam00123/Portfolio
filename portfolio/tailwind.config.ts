@@ -18,6 +18,9 @@ const config: Config = {
         "font-white": "#e2e8f0",
         paragraph: "#94a3b8",
       },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+      },
     },
   },
   plugins: [],

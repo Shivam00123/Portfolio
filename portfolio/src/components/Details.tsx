@@ -2,41 +2,12 @@
 
 import Screen from "@/components/Screen";
 import Image from "next/image";
-import React, { Suspense, useEffect, useState } from "react";
-import dummy from "../../public/images/project.png";
-import axios from "axios";
-import { notFound } from "next/navigation";
-import { GenericObject } from "../../interfaces/types";
+import React, { useState } from "react";
 
-const Details = ({ params }: { params: any }) => {
-  const [id, section] = params.info;
-  const [data, setData] = useState<GenericObject | null>(null);
+import Loader from "./Loader";
+
+const Details = ({ data }: { data: any }) => {
   const [hoveringOnImage, setHoveringOnImage] = useState<boolean>(false);
-
-  const fetchData = async () => {
-    try {
-      let collectionName;
-      switch (decodeURIComponent(section)) {
-        case "company projects":
-          collectionName = "companyprojects";
-          break;
-        case "personal projects":
-          collectionName = "personalProjects";
-          break;
-        default:
-          return notFound();
-      }
-      const response = await axios.get(`/api/v1/${collectionName}/${id}`);
-
-      setData(response.data.data);
-    } catch (error) {
-      console.log({ error });
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const openLink = (link: string) => {
     if (!link) return;
@@ -51,12 +22,20 @@ const Details = ({ params }: { params: any }) => {
             {data?.title} {data?.company ? `. ${data.company}` : ""}{" "}
             {data?.location}
           </h1>
-          <p className="text-sm text-paragraph tracking-wide my-10 text-justify whitespace-pre-line px-10 lg:px-20">
+          <p
+            className={`text-sm text-paragraph tracking-wide my-10 text-justify whitespace-pre-line px-10 lg:px-20 ${
+              hoveringOnImage ? "reduceOpacity" : "normalOpacity"
+            }`}
+          >
             {`${data?.longDescription}`}
           </p>
           <h1
-            style={{ margin: "50px 0px 10px 0px" }}
-            className="text-2xl text-font-white font-bold px-10 lg:px-20"
+            style={{
+              margin: "50px 0px 10px 0px",
+            }}
+            className={`text-2xl text-font-white font-bold px-10 lg:px-20 ${
+              hoveringOnImage ? "reduceOpacity" : "normalOpacity"
+            }`}
           >
             Key Contribution
           </h1>
@@ -66,7 +45,9 @@ const Details = ({ params }: { params: any }) => {
                 listStyleType: "disc",
                 marginLeft: "12px",
               }}
-              className="text-paragraph text-sm list-disc lg:w-1/2 mr-10"
+              className={`text-paragraph text-sm list-disc lg:w-1/2 mr-10 ${
+                hoveringOnImage ? "reduceOpacity" : "normalOpacity"
+              }`}
             >
               {data?.points?.map((point: string, idx: any) => (
                 <li key={idx} className="mb-5">
@@ -80,7 +61,7 @@ const Details = ({ params }: { params: any }) => {
                 onClick={() => openLink(`${data?.link}`)}
                 onMouseEnter={() => setHoveringOnImage(true)}
                 onMouseLeave={() => setHoveringOnImage(false)}
-                className={`w-full lg:w-1/2 h-fit z-40 relative ${
+                className={`w-full lg:w-1/2 h-fit min-h-72 z-40 relative ${
                   hoveringOnImage ? "image-hover-on block" : "image-hover-off"
                 }`}
               >
@@ -91,8 +72,15 @@ const Details = ({ params }: { params: any }) => {
                   alt={`${data.image}`}
                   layout="responsive"
                 />
-                {hoveringOnImage && data?.link && (
-                  <div className="absolute bottom-0 left-0 text-font-white z-50 w-fit h-6 bg-main-blue text-[8px] font-bold p-2 rounded-tr-lg  text-center grid place-items-center">
+
+                {data?.link && (
+                  <div
+                    className={`pointer-events-none absolute top-1/2 text-font-white rounded-sm overflow-hidden -z-10 w-fit h-fit bg-main-blue text-md font-bold px-3 py-2 text-center ${
+                      hoveringOnImage
+                        ? "link-text-on hidden lg:block"
+                        : "link-text-off  hidden lg:block"
+                    } block`}
+                  >
                     <h1 className="text-font-white">
                       Click image to open website
                     </h1>
@@ -103,7 +91,7 @@ const Details = ({ params }: { params: any }) => {
           </div>
         </div>
       ) : (
-        <h1>Loading...</h1>
+        <Loader />
       )}
     </Screen>
   );

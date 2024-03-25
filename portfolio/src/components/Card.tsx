@@ -117,12 +117,12 @@ const Card = ({
           </div>
         </h3>
         <p className="mt-2 text-sm leading-normal">{item.description}</p>
-        {item?.likes && (
+        {/* {item?.likes && (
           <div className="w-full flex text-font-white items-center gap-2 my-2 text-sm font-bold">
             <TiStarFullOutline />
             {item.likes}
           </div>
-        )}
+        )} */}
         <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
           {item.techStack?.map((el: string) => (
             <li key={el} className="mr-1.5 mt-2">

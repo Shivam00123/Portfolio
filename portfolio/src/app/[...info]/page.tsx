@@ -14,6 +14,10 @@ const NoDataFound = () => {
 
 const Page = ({ params }: { params: any }) => {
   const [id, section] = params.info;
+  if (!id || !section) {
+    notFound();
+  }
+
   const [noDataFound, setNoDataFound] = useState<boolean>(false);
 
   const [data, setData] = useState<GenericObject | null>(null);
@@ -38,15 +42,21 @@ const Page = ({ params }: { params: any }) => {
   };
 
   useEffect(() => {
-    fetchData();
     let timer = setTimeout(() => {
       if (!data) {
         setNoDataFound(true);
       }
     }, 5000);
+    if (data) {
+      clearTimeout(timer);
+    }
     return () => {
       clearTimeout(timer);
     };
+  }, [data]);
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (

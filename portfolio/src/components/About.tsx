@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import TextAnimation from "./TextAnimation";
 import { useRecoilState } from "recoil";
 import { menuState } from "../../store/store";
 

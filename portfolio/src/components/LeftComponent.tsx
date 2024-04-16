@@ -8,7 +8,7 @@ const LeftComponent = () => {
       <div className="flex flex-col items-center lg:items-start">
         <h1 className="text-5xl font-bold">Shivam Rawat</h1>
         <h2 className="mt-3 text-lg font-medium tracking-tight sm:text-xl">
-          Frontend Engineer
+          Full Stack Developer
         </h2>
         <p className="w-full lg:w-fit text-center lg:text-left mt-4 max-w-xs leading-normal text-paragraph">
           I build pixel-perfect, engaging, and accessible digital experiences.

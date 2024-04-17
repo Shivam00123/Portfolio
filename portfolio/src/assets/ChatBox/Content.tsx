@@ -3,6 +3,9 @@ import Header from "./Header";
 import "./styles.css";
 import ChatSection from "./ChatSection";
 import InputSection from "./InputSection";
+import { useRecoilState } from "recoil";
+import UserForm from "./UserForm";
+import { authState } from "../../../store/auth";
 
 interface Props {
   openChatBox: boolean;
@@ -10,6 +13,7 @@ interface Props {
 }
 
 const Content: React.FC<Props> = ({ openChatBox, setOpenChatBox }) => {
+  const [state] = useRecoilState(authState);
   return (
     <div
       className={`w-full h-full flex flex-col justify-start bg-transparent transition-all duration-1000 ${
@@ -17,8 +21,14 @@ const Content: React.FC<Props> = ({ openChatBox, setOpenChatBox }) => {
       }`}
     >
       <Header setOpenChatBox={setOpenChatBox} />
-      <ChatSection />
-      <InputSection />
+      {state ? (
+        <>
+          <ChatSection />
+          <InputSection />
+        </>
+      ) : (
+        <UserForm />
+      )}
     </div>
   );
 };

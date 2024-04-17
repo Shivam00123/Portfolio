@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImAttachment } from "react-icons/im";
 import { BsEmojiDizzy } from "react-icons/bs";
 import { FaMicrophone } from "react-icons/fa";
+import { IoSend } from "react-icons/io5";
+
 import { colors } from "../../../config/colors";
 
 const InputSection = () => {
+  const [message, setMessage] = useState<string>("");
   return (
     <div
       style={{
@@ -22,6 +25,7 @@ const InputSection = () => {
         style={{ width: "80%", height: "60%" }}
       >
         <input
+          onChange={(e) => setMessage(e.target.value)}
           style={{ padding: "0px 10px", outline: "none" }}
           type="text"
           className="w-full h-full text-sm outline-none"
@@ -30,10 +34,16 @@ const InputSection = () => {
       </div>
       <div
         style={{ width: "15%", margin: "0px 10px" }}
-        className="flex items-center mx-2 justify-between"
+        className="flex items-center mx-2 justify-center"
       >
-        <ImAttachment />
-        <FaMicrophone />
+        {message ? (
+          <IoSend />
+        ) : (
+          <>
+            <ImAttachment style={{ marginRight: "10px" }} />
+            <FaMicrophone />
+          </>
+        )}
       </div>
     </div>
   );

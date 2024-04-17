@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Time from "./Time";
 import MyChat from "./MyChat";
 import ReceivedChat from "./ReceivedChat";
 import { colors } from "../../../config/colors";
 
 const ChatSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
+
+  const scrollToBottom = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  };
+
   return (
     <div
+      ref={containerRef}
       style={{
         backgroundColor: colors.chatBg,
         height: "75%",
@@ -14,7 +27,7 @@ const ChatSection = () => {
         overflow: "scroll",
         flexShrink: 0,
       }}
-      className="w-full h-1/2 flex flex-col flex-shrink-0"
+      className="w-full flex flex-col flex-shrink-0"
     >
       <Time />
       <MyChat />

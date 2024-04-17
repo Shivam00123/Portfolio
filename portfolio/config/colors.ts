@@ -4,4 +4,5 @@ export const colors = {
   green: "#005046",
   pureWhite: "#fff",
   chatBg: "#eae6de",
+  grey: "#b2b2b2",
 };

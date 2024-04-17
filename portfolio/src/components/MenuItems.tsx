@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRecoilState } from "recoil";
-import { menuState } from "../../store/store";
+import { menuState } from "../../store/menu";
 
 const ListItem = ({
   title,

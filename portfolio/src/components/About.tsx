@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
-import { menuState } from "../../store/store";
+import { menuState } from "../../store/menu";
 
 const About = () => {
   const aboutRef = useRef(null);

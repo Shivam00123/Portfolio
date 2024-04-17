@@ -3,7 +3,7 @@ import { GenericObject } from "../../interfaces/types";
 import { FaArrowRight } from "react-icons/fa6";
 import { TiStarFullOutline } from "react-icons/ti";
 import { useRecoilState } from "recoil";
-import { menuState } from "../../store/store";
+import { menuState } from "../../store/menu";
 import Image from "next/image";
 
 const Card = ({

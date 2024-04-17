@@ -17,6 +17,7 @@ const config: Config = {
         "main-blue": "#0f172a",
         "font-white": "#e2e8f0",
         paragraph: "#94a3b8",
+        "border-color": "#dedee0",
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

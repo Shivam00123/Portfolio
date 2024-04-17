@@ -1,0 +1,64 @@
+.chatbox-open {
+  border-radius: 10px;
+  width: 360px;
+  height: 545px;
+  overflow: hidden;
+}
+.chatbox-close {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+}
+.chatbox-bg-open {
+  width: 100vw;
+  height: 100vh;
+}
+.chatbox-bg-close {
+  width: fit-content;
+  height: fit-content;
+}
+
+.hideHelperText {
+  width: 0;
+  height: 0;
+  top: 1rem;
+  opacity: 0; /* Hide initially */
+  transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition for top position and opacity */
+}
+
+.showHelperText {
+  width: fit-content;
+  height: fit-content;
+  top: -3rem;
+  opacity: 1; /* Show */
+  transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition for top position and opacity */
+}
+.showHelperText p {
+  animation: helpertext-animation 1s;
+  transition: all;
+}
+
+.hideHelperText p {
+  font-size: 0.1px;
+}
+.showHelperText::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent; /* Half the width of the triangle */
+  border-right: 8px solid transparent; /* Half the width of the triangle */
+  border-top: 8px solid #e2e8f0; /* Height of the triangle and color */
+  position: absolute;
+  bottom: -8px; /* Adjust this value to position the pointer */
+  right: calc(1% - 2px);
+}
+
+@keyframes helpertext-animation {
+  0% {
+    transform: scale(0.1); /* Start with a very small scale */
+  }
+
+  100% {
+    transform: scale(1); /* Scale up to normal size */
+  }
+}

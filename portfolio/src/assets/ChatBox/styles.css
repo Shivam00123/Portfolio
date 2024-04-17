@@ -1,0 +1,33 @@
+.content-visible {
+  animation: fade-in-out 1s;
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.mychat::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #005046;
+  position: absolute;
+  top: 0px;
+  right: calc(-2% - 2px);
+}
+
+.receivedChat::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #fff;
+  position: absolute;
+  top: 0px;
+  left: calc(-2% - 2px);
+}

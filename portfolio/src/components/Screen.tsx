@@ -5,6 +5,7 @@ import { RecoilRoot } from "recoil";
 import { Inter } from "next/font/google";
 
 import { GenericObject } from "../../interfaces/types";
+import ChatButton from "./ChatButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ const Screen = ({ children }: { children: any }) => {
   return (
     <RecoilRoot>
       <main
-        className={`w-screen flex min-h-screen flex-col items-center justify-between bg-main-blue ${inter.variable} font-sans`}
+        className={`w-screen flex min-h-screen flex-col items-center justify-between bg-main-blue relative ${inter.variable} font-sans`}
       >
         <div
           className="h-full pointer-events-none fixed inset-0 z-30 transition duration-300 lg:absolute"
@@ -37,6 +38,7 @@ const Screen = ({ children }: { children: any }) => {
           }}
         ></div>
         {children}
+        <ChatButton />
       </main>
     </RecoilRoot>
   );

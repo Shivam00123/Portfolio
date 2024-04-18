@@ -36,13 +36,27 @@ const OTP = () => {
     }
   };
 
-  // const handleClearOtp = () => {
-  //   setOtp(Array(4).fill(""));
-  //   inputRefs.current[0].focus();
-  // };
-
-  const handleVerify = () => {
-    setState(true);
+  const handleVerify = async () => {
+    const OTP = otp.join("");
+    const response: any = await fetch(
+      "http://localhost:8000/v1/user/verifyOTP",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ OTP }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((err) => {
+        console.log("error");
+        return;
+      });
+    if (response?.status === "success") {
+      setState(true);
+    }
   };
 
   return (

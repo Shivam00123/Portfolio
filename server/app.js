@@ -6,13 +6,16 @@ const experienceRouter = require("./Routes/experienceRouter");
 const companyProjectsRouter = require("./Routes/companyProjectsRouter");
 const personalProjectsRouter = require("./Routes/personalProjectsRouter");
 const resumeRouter = require("./Routes/resumeRouter");
+const authRouter = require("./Routes/authRoutes");
 
 app.use(cors());
 app.options("*", cors());
+app.use(express.json());
 
 app.use("/v1/experiences", experienceRouter);
 app.use("/v1/companyProjects", companyProjectsRouter);
 app.use("/v1/personalProjects", personalProjectsRouter);
 app.use("/v1/resume", resumeRouter);
+app.use("/v1/user", authRouter);
 
 module.exports = app;

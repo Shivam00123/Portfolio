@@ -9,7 +9,7 @@ const Projects = () => {
 
   const fetchCompanyProjects = async () => {
     const cp = await axios.get(
-      "https://portfolio-1d33.onrender.com/v1/companyProjects"
+      "https://portfolio-server-production-2ab9.up.railway.app/v1/companyProjects"
     );
     setCompanyProjects(cp.data.data);
   };

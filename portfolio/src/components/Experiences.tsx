@@ -10,7 +10,7 @@ const Experiences = () => {
   const [experiences, setExperiences] = useState<GenericObject[]>([]);
   const fetchExperiencesData = async () => {
     const data = await axios.get(
-      "https://portfolio-1d33.onrender.com/v1/experiences"
+      "https://portfolio-server-production-2ab9.up.railway.app/v1/experiences"
     );
     setExperiences(data.data.data);
   };

@@ -8,7 +8,7 @@ const ResumeView = () => {
 
   const fetchResumePath = async () => {
     const path = await axios.get(
-      "https://portfolio-1d33.onrender.com/v1/resume"
+      "https://portfolio-server-production-2ab9.up.railway.app/v1/resume"
     );
     console.log(path);
     setResumePath(path.data.data?.[0].pathToPdf);

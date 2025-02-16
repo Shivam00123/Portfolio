@@ -34,7 +34,7 @@ const Page = ({ params }: { params: any }) => {
           break;
       }
       const response = await axios.get(
-        `https://portfolio-1d33.onrender.com/v1/${collectionName}/${id}`
+        `https://portfolio-server-production-2ab9.up.railway.app/v1/${collectionName}/${id}`
       );
 
       setData(response.data.data);
